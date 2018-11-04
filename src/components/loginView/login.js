@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Logo from '../logoView/logo';
-// import imagencita from './logo.png';
 
 class Login extends React.Component {
 	constructor(){
