@@ -1,18 +1,17 @@
 {
-  "name": "spa-github-pages",
-  "version": "5.1.0",
+  "name": "valentify",
+  "version": "1.0.0",
   "private": true,
-  "description": "Single Page Apps for GitHub Pages",
+  "description": "valentinoConti Globant Bootcamp Final Project",
   "scripts": {
     "start": "webpack-dev-server --devtool eval-source-map --history-api-fallback --open",
     "build": "webpack -p"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafrex/spa-github-pages.git"
+    "url": "git+https://github.com/valentinoConti/valentify.git"
   },
-  "author": "Rafael Pedicini <code@rafrex.com>",
-  "license": "MIT",
+  "author": "valentinoConti",
   "dependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
