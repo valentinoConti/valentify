@@ -1,5 +1,7 @@
 import React from 'react';
-import imagencita from './logo.png';
+
+import Logo from '../logoView/logo';
+// import imagencita from './logo.png';
 
 class Login extends React.Component {
 	constructor(){
@@ -26,8 +28,7 @@ class Login extends React.Component {
 					</a>
 				</div>
 				<br/>
-				<img src="https://i.imgur.com/tXtpFkS.png" alt="logo"></img>
-				<img src={imagencita} alt="logotrex"></img>
+				<Logo handleClick={this.handleClick.bind(this)} />
 				<p>Please login to your Spotify Account to use this app</p> 
 			</div>
 		);
