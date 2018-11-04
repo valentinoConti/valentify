@@ -13,6 +13,7 @@ module.exports = {
 		rules: [
 			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
 			{ test: /\.html$/, loader: 'html-loader' },
+			{ test: /\.(pdf|jpg|png|gif|svg|ico)$/, loader: 'url-loader' },
 		],
 	},
 
