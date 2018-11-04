@@ -26,7 +26,7 @@ class Login extends React.Component {
 				</div>
 				<br/>
 				<img src="https://i.imgur.com/tXtpFkS.png" alt="logo"></img>
-				<img src="./logo.png" alt="logoo"></img>
+				<img src="logo.png" alt="logoo"></img>
 				<p>Please login to your Spotify Account to use this app</p> 
 			</div>
 		);
