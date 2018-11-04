@@ -1,0 +1,225 @@
+ /*App.cs*/
+.App {
+  text-align: center;
+}
+/*login.css*/
+body {
+	text-align: center;
+	min-width: 320px;
+}
+
+.checked{
+	color: orange;
+}
+
+.item {
+	min-width: 75px;
+	position: relative;
+	border: 1px solid black;
+	transition: box-shadow .3s;
+}
+.item:hover {
+	box-shadow: 0 0 20px rgba(33,33,33,.5);
+	cursor: pointer;
+}
+
+.fondo {
+	width:100%;
+	padding-top:16px;
+	padding-bottom: 16px;
+	background-color: orange;
+}
+
+.fondoEleccion {
+	width:100%;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	background-color: DarkOrange;
+}
+
+.completeButton{
+	width: 21%;
+	background-color: orange;
+	color: black;
+	border: 1px solid black;
+	cursor: pointer;
+	transition: box-shadow .3s;
+	border-radius: 2px;
+}
+.completeButton:hover{
+	box-shadow: 0 0 20px rgba(33,33,33,.3);
+}
+.selectedButton{
+	background-color: grey !important;
+	color: white !important;
+}
+
+a {
+	color: black;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.bigFont {
+	font-size: 24px;
+}
+
+/*logo.css*/
+@font-face { 
+	font-family: proxima-nova;
+	src: url('ProximaNova.ttf'); 
+} 
+
+.valentify {
+	font-family: proxima-nova, sans-serif;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 45px;
+	display: inline-block;
+	margin: 0;
+	cursor: pointer;
+	transition: box-shadow .3s;
+}
+.valentify:hover {
+	box-shadow: 0 0 20px rgba(33,33,33,.1);
+}
+
+.loguex {
+	width: 70px;
+	float: left;
+}
+
+.textex {
+	position: relative;
+	top: 7px;
+}
+
+/*prevnext.css*/
+.theCont{
+	padding-bottom:10px;
+	padding-top:10px;
+	width:90%;
+	margin:auto;
+}
+.floatLeft{
+	position: relative;
+	top: -5px;
+	float: left;
+	margin-bottom: 5px;
+}
+.floatRight{
+	position: relative;
+	top: -5px;
+	float: right;
+	margin-bottom: 5px;
+}
+.bigger {
+	width: 100px;
+	height: 40px;
+	background-color: orange;
+	color: black;
+	transition: box-shadow .3s;
+	border-radius: 8px;
+}
+.bigger:hover {
+	box-shadow: 0 0 20px rgba(33,33,33,.5);
+}
+
+/*results.css*/
+.square {
+	/*width: 25%;*/
+	min-width: 75px;
+	position: relative;
+	border: 1px solid black;
+	background-size: cover;
+	background-repeat: no-repeat;
+	transition: box-shadow .3s;
+	border-radius:10px;
+}
+.square:hover {
+	box-shadow: 0 0 20px rgba(33,33,33,1);
+	cursor: pointer;
+}
+/* Mantaining the squares with resizing: */
+.square:after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+.taxt {
+	background-color: black;
+	color: white;
+}
+.sobreLaImagen {
+	position: absolute;
+	width: 100%;
+	height: 100;
+}
+
+table {
+	width:90%;
+	margin:auto;
+}
+
+/* Preventing table normal behaviour, so it can put columns one in top of each other */
+table td {
+	display: inline-block;
+}
+
+/* Small devices | Two elements per row */
+@media only screen and (min-width: 10px) {
+	.elemSize{
+		width: 46%;
+	}
+}
+
+/* Medium or Big devices | Four elements per row */
+@media only screen and (min-width: 670px) {
+	.elemSize{
+		width: 23%;
+	}
+}
+
+/*search.css*/
+#placingholder {
+	width:80%;
+	height:40px;
+	font-size:30px;
+	text-align: center;
+	margin-top: 7px;
+	transition: box-shadow .3s;
+	border-radius: 6px;
+}
+#placingholder:hover {
+	box-shadow: 0 0 20px rgba(33,33,33,.2);
+}
+#placingholder::placeholder {
+	font-size: 21px;
+}
+
+#searching {
+	width:200px;
+	height: 55px;
+	background-color: orange;
+	color: black;
+	transition: box-shadow .3s;
+	border-radius:5px;
+}
+#searching:hover {
+	box-shadow: 0 0 20px rgba(33,33,33,.5);
+}
+
+.marginRightt {
+	margin-right: 8px;
+}
+
+/*specific.css*/
+.nomar{
+	margin-top: 4px;
+	margin-bottom: 4px;
+	transition: box-shadow .2s;
+}
+.nomar:hover{
+	box-shadow: 0 0 20px rgba(33,33,33,.5);
+	cursor: pointer
+}
