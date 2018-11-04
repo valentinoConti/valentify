@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './components/App';
+import Login from './components/loginView/login';
 
 ReactDOM.render(
   <BrowserRouter basename="/valentify/">
-    <App />
+    <Login />
   </BrowserRouter>,
   document.getElementById('root'),
 );
