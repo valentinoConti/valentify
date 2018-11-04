@@ -3,6 +3,7 @@ import Interactive from 'react-interactive';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import ExampleComponent from './ExampleComponent';
+import Login from './loginView/login';
 import PageNotFound from './PageNotFound';
 import Breadcrumbs from './Breadcrumbs';
 import s from '../styles/app.style';
@@ -23,7 +24,7 @@ export default function App() {
       </nav>
 
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Login} />
         <Route path="/example" component={ExampleComponent} />
         <Route component={PageNotFound} />
       </Switch>
