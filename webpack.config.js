@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-	entry: `${__dirname}/src/index.js`,
+	entry: ['babel-polyfill', `${__dirname}/src/index.js`],
+	// entry: `${__dirname}/src/index.js`,
 	output: {
 		path: `${__dirname}/build`,
 		publicPath: '/build/',
@@ -12,6 +13,7 @@ module.exports = {
 	module: {
 		rules: [
 			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+			{ test: /\.jsx?$/, loader: 'babel-loader' },
 			{ test: /\.html$/, loader: 'html-loader' },
 			{ test: /\.(pdf|jpg|png|gif|svg|ico)$/, loader: 'url-loader' },
 		],

@@ -5,7 +5,7 @@ import Logo from '../logoView/logo';
 class Login extends React.Component {
 	constructor(){
 		super();
-    	this.redirectURI = 'http://localhost:3000/callback';
+    	this.redirectURI = 'https://valentinoConti.github.io/valentify/callback';
     	this.clientId = '69b9f492645c4f3f8f09175d51cca574';
     	this.clientSecret = '9771b0b1821e4aa39e2e3ff9a749061a';
     	this.type = 'token';
