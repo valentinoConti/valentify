@@ -5,7 +5,7 @@ class Logo extends React.Component {
 		return (
 			<p className="valentify" 
 			onClick={()=>{ 
-				if (window.location.hash === "") this.props.handleClick();
+				if (window.location.pathname === "/") this.props.handleClick();
 				else window.location.reload();
 			}}>
 				<img className="loguex" src={require('./logo.png')} alt="Spotify Logo"/>

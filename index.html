@@ -8,44 +8,18 @@
 		<title>Valentify</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="index.css">
-<!-- 		<style>
-			html, body, div, span, a, p, ul, li, h1, code, nav {
-				margin: 0;
-				border: 0;
-				padding: 0;
-				box-sizing: inherit;
-				font: inherit;
-				text-decoration: inherit;
-				text-align: inherit;
-				color: inherit;
-				background: transparent;
-			}
-			/*pass window height (w/o scroll bars) down to react app, note can't use vh becasue that
-			includes scroll bars and mobile browser footer, etc so doesn't give viewable area*/
-			html, body { height: 100%; }
-			html { background-color: rgb(0, 120, 0); }
-			#root { background-color: #F0F0F0; min-height: 100%; }
 
-			/*required for IE/Edge to be compatible with left:50vw & transform:translate(-50%, 0),
-			otherwise there is a phantom div on the right side of the screen (from the left:50vw),
-			that the window will scroll to. Note the left:50vw and transform is used to center content
-			horizaontally based on vw to prevent content jump when vertical scroll bar show/hide.*/
-			body { overflow-x: hidden; }
-		</style> -->
-
-		<!-- Start Single Page Apps for GitHub Pages -->
 		<script type="text/javascript">
-			// Single Page Apps for GitHub Pages
-			// https://github.com/rafrex/spa-github-pages
-			// Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
-			// ----------------------------------------------------------------------
-			// This script checks to see if a redirect is present in the query string
-			// and converts it back into the correct url and adds it to the
-			// browser's history using window.history.replaceState(...),
-			// which won't cause the browser to attempt to load the new url.
-			// When the single page app is loaded further down in this file,
-			// the correct url will be waiting in the browser's history for
-			// the single page app to route accordingly.
+			/* Script taken from: https://github.com/rafrex/spa-github-pages
+			 * ---
+			 * This script checks to see if a redirect is present in the query string
+			 * and converts it back into the correct url and adds it to the
+			 * browser's history using window.history.replaceState(...),
+			 * which won't cause the browser to attempt to load the new url.
+			 * When the single page app is loaded further down in this file,
+			 * the correct url will be waiting in the browser's history for
+			 * the single page app to route accordingly. 
+			 */
 			(function(l) {
 				if (l.search) {
 					var q = {};
@@ -63,7 +37,6 @@
 				}
 			}(window.location))
 		</script>
-		<!-- End Single Page Apps for GitHub Pages -->
 
 	</head>
 	<body style="background-color:#f1f1f1; margin: 0; padding: 0; font-family: sans-serif;">
@@ -71,8 +44,10 @@
 			You need to enable JavaScript to run this app.
 		</noscript>
 		<div id="root"></div>
-		<!-- single page app in bundle.js -->
+
+		<!-- Development (no /valentify/) and Production (/valentify/) -->
 		<!-- <script src="/build/bundle.js"></script> -->
 		<script src="/valentify/build/bundle.js"></script>
+
 	</body>
 </html>

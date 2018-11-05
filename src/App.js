@@ -35,12 +35,14 @@ function mapDispatchToProps(dispatch) {
 	return {
 		goingProfile : (resp, respon) => { 
 			dispatch({
-				type: 'GO_PROFILE', 
+				type: 'GO_PROFILE',
 				profile: resp, 
 				savedTracks: respon}) 
 		},
 		goingSearch : () => { 
-			dispatch({type: 'GO_SEARCH'}) 
+			dispatch({
+				type: 'GO_SEARCH'
+			}) 
 		},
 		gettingSomething : (spec, what, isfav) => { 
 			dispatch({
@@ -78,6 +80,8 @@ function mapDispatchToProps(dispatch) {
 		}
 	}
 };
+
+
 
 class App extends React.Component {
 
@@ -285,7 +289,6 @@ class App extends React.Component {
 
 				<div>
 					<Header goProfile={this.goProfile.bind(this)} goSearch={this.goSearch.bind(this)} cual={this.props.profile}/>
-					
 				</div>
 
 				{ this.props.profile &&

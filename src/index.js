@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-require("babel-core/register");
-require("babel-polyfill");
-
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
+//This requires are to be able to use JSX on webpack without changing
+//the normal syntax.-
+require("babel-core/register");
+require("babel-polyfill");
+
+//Components
 import Login from './components/loginView/login';
 import App from './App';
 
@@ -27,54 +30,54 @@ const initialState = {
 
 function reducer(state = initialState, action) {
 
-		switch (action.type) {
+	switch (action.type) {
 
-			case "GO_PROFILE":
-				return {
-					...state,
-					profile: action.profile,
-					savedTracks: action.savedTracks
-				}; 
+		case "GO_PROFILE":
+			return {
+				...state,
+				profile: action.profile,
+				savedTracks: action.savedTracks
+			}; 
 
-			case "GO_SEARCH":
-				return {
-					...state,
-					profile: false
-				};
+		case "GO_SEARCH":
+			return {
+				...state,
+				profile: false
+			};
 
-			case "CHANGE_NOWPLAYING":
-				return {
-					...state,
-					nowPlaying: action.nowPlaying
-				}
+		case "CHANGE_NOWPLAYING":
+			return {
+				...state,
+				nowPlaying: action.nowPlaying
+			}
 
-			case "GET_SOMETHING":
-				return {
-					...state,
-					specificShow: action.specificShow,
-					whatToSearch: action.whatToSearch,
-					isFavourite: action.isFavourite
-				};
+		case "GET_SOMETHING":
+			return {
+				...state,
+				specificShow: action.specificShow,
+				whatToSearch: action.whatToSearch,
+				isFavourite: action.isFavourite
+			};
 
-			case "ABOUT_SEARCH_SOMETHING":
-				return {
-					...state,
-					specificShow: action.specificShow,
-					searchPage: action.searchPage,
-					searchValue: action.searchValue,
-					searchResult: action.searchResult
-				};
+		case "ABOUT_SEARCH_SOMETHING":
+			return {
+				...state,
+				specificShow: action.specificShow,
+				searchPage: action.searchPage,
+				searchValue: action.searchValue,
+				searchResult: action.searchResult
+			};
 
-			case "SEARCH_SOMETHING":
-				return {
-					...state,
-					moreToSearch: action.moreToSearch,
-					whatToSearch: action.whatToSearch,
-					searchResult: action.searchResult
-				};
-			default:
-				return state;
-		}
+		case "SEARCH_SOMETHING":
+			return {
+				...state,
+				moreToSearch: action.moreToSearch,
+				whatToSearch: action.whatToSearch,
+				searchResult: action.searchResult
+			};
+		default:
+			return state;
+	}
 }
 
 const store = createStore(reducer);
@@ -83,8 +86,8 @@ ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter basename='/valentify/'>
 			<Switch>
-			<Route exact path="/" component={Login} />
-			<Route path="/callback" component={App} />
+				<Route exact path="/" component={Login} />
+				<Route path="/callback" component={App} />
 			</Switch>
 		</BrowserRouter>
 	</Provider>,
