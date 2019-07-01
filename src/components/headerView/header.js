@@ -1,21 +1,36 @@
 import React from 'react';
-import Logo from '../logoView/logo';
+import PropTypes from 'prop-types'
+import Logo from '../logoView/logo'
+import './header.css'
 
-class Header extends React.Component {
+const Header = ({ cual, goSearch, goProfile }) => (
+  <div>
+    <div className="fondo">
+      <Logo />
+    </div>
+    <div className="fondoEleccion">
+      <button
+        type="button"
+        className={(!cual && 'completeButton selectedButton') || 'completeButton'}
+        onClick={() => goSearch()}
+      >
+        Search
+      </button>
+      <button
+        type="button"
+        className={(cual && 'completeButton selectedButton') || 'completeButton'}
+        onClick={() => goProfile()}
+      >
+        Profile
+      </button>
+    </div>
+  </div>
+)
 
-	render(){
-		return(
-			<div>
-				<div className='fondo'>
-					<Logo />
-				</div>
-				<div className="fondoEleccion">
-					<button className={(!this.props.cual && 'completeButton selectedButton') || 'completeButton'} onClick={()=>this.props.goSearch()}>Search</button>
-					<button className={(this.props.cual && 'completeButton selectedButton') || 'completeButton'} onClick={()=>this.props.goProfile()}>Profile</button>
-				</div>
-			</div>
-		);
-	}
+Header.propTypes = {
+  cual: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
+  goProfile: PropTypes.func.isRequired,
+  goSearch: PropTypes.func.isRequired
 }
 
 export default Header;

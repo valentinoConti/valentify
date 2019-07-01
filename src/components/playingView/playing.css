@@ -1,0 +1,17 @@
+.item {
+  min-width: 75px;
+  position: relative;
+  border: 1px solid black;
+  transition: box-shadow .3s;
+  width: 150px;
+}
+
+.item:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.5);
+  cursor: pointer;
+}
+
+.footerInfo {
+  font-size: '11px'; 
+  margin-bottom: 5px;
+}

@@ -1,0 +1,31 @@
+#placingholder {
+  width:80%;
+  height:40px;
+  font-size:30px;
+  text-align: center;
+  margin-top: 7px;
+  transition: box-shadow .3s;
+  border-radius: 6px;
+}
+#placingholder:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.2);
+}
+#placingholder::placeholder {
+  font-size: 21px;
+}
+
+#searching {
+  width:200px;
+  height: 55px;
+  background-color: orange;
+  color: black;
+  transition: box-shadow .3s;
+  border-radius:5px;
+}
+#searching:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.5);
+}
+
+.marginRightt {
+  margin-right: 8px;
+}

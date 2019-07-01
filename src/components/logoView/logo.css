@@ -1,0 +1,28 @@
+@font-face { 
+  font-family: proxima-nova;
+  src: url('ProximaNova.ttf'); 
+} 
+
+.valentify {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 45px;
+  display: inline-block;
+  margin: 0;
+  cursor: pointer;
+  transition: box-shadow .3s;
+}
+.valentify:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.1);
+}
+
+.loguex {
+  width: 70px;
+  float: left;
+}
+
+.textex {
+  position: relative;
+  top: 7px;
+}

@@ -1,0 +1,25 @@
+.completeButton{
+  width: 21%;
+  background-color: orange;
+  color: black;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: box-shadow .3s;
+  border-radius: 2px;
+}
+
+.completeButton:hover{
+  box-shadow: 0 0 20px rgba(33,33,33,.3);
+}
+
+.selectedButton{
+  background-color: grey !important;
+  color: white !important;
+}
+
+.fondoEleccion {
+  width:100%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: DarkOrange;
+}

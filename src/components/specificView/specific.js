@@ -1,232 +1,278 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+import './specific.css'
 
 function mapStateToProps(state) {
-	return { 
-		...state,
-		whatToSearch: state.whatToSearch,
-		isFavourite: state.isFavourite
-	}
-};
+  return {
+    ...state,
+    whatToSearch: state.whatToSearch,
+    isFavourite: state.isFavourite
+  }
+}
 
 class Specific extends React.Component {
-	
-	/* 
-	 * Method: drawImage
-	 * Description: Return the correct image no matter if song/artist/album was selected, and with no errors.-
-	 * Author: valentinoConti
-	 */
-	drawImage = () => {
-		try {
-			//Track
-			if(this.props.specificShow.album.images[0].url) return this.props.specificShow.album.images[0].url;
-		} 
-		catch(e){
-			try{
-				//Album
-				if (this.props.specificShow.images[0].url) return this.props.specificShow.images[0].url;
-			}
-			catch (err) {
-				try{
-					//Artist
-					if (this.props.specificShow[0].images[0].url) return this.props.specificShow[0].images[0].url;
-				}
-				catch (error) {
-					if (error instanceof TypeError) {
-						//There is a result selected but doesnt have picture
-						return require('./noHay.png');
-					}
-				}
-			}
-		}
-	}
+  /*
+   * Method: drawImage
+   * Description: Return the correct image no matter if song/artist/album
+   *              was selected, and with no errors.-
+   * Author: valentinoConti
+   */
+  drawImage = () => {
+    const { specificShow } = this.props
+    try {
+      // Track
+      if (specificShow.album.images[0].url) return specificShow.album.images[0].url;
+    } catch (e) {
+      try {
+        // Album
+        if (specificShow.images[0].url) return specificShow.images[0].url;
+      } catch (err) {
+        try {
+          // Artist
+          if (specificShow[0].images[0].url) return specificShow[0].images[0].url;
+        } catch (error) {
+          if (error instanceof TypeError) {
+            // There is a result selected but doesnt have picture
+            return require('./noHay.png');
+          }
+        }
+      }
+    }
+    return require('./noHay.png');
+  }
 
-	drawInfo = () => {
-		let noRepeat = 0;
-		let info = [];
-		switch (this.props.whatToSearch) {
-			case 'Songs':
-				
-				try{
-					if (this.props.specificShow.preview_url){
-						info.push(
-							<div key={noRepeat++}>
-							<p>Preview:</p>
-							<audio type="audio/mpeg" controls src={this.props.specificShow.preview_url}>
-							</audio>
-							</div>
-							
-						);
-					}else{
-						info.push(
-							<p key={noRepeat++}>No preview available for this song</p>
-						);
-					}
-				}
-				catch(e){};
+  drawInfo = () => {
+    const {
+      addFavourite,
+      getAlbum,
+      getArtist,
+      getSong,
+      isFavourite,
+      removeFavourite,
+      specificShow,
+      whatToSearch
+    } = this.props
 
-				info.push(
-					<p key={noRepeat++}>
-						<b>Album</b>: 
-						<a onClick={ () => 
-							{
-							 this.props.getAlbum(this.props.specificShow.album.id);
-							} 
-						}>
-							{ this.props.specificShow.album.name }
-						</a>
-						<br/>
-						<br/>
-						<b>Artist/s:</b>
-					</p>
-				);
-				this.props.specificShow.artists.forEach((each)=>{ 
-					info.push(
-						<p className="nomar" key={noRepeat++}  onClick={ () => 
-								{
-								 this.props.getArtist(each.id);
-								} 
-							}>
-							<a>
-								{ each.name }
-							</a>
-						</p>
-					);
-				});
-				if (this.props.isFavourite){
-					info.push(
-						<p key={noRepeat++}>
-							<b style={{cursor:'pointer'}}>Favorited </b><br/>
-							<span style={{cursor:'pointer'}}
-							onClick={() => {this.props.removeFavourite(this.props.specificShow.id, 'Songs')}} 
-							className="bigFont fa fa-star checked"></span>
-						</p>
-					);
-				}else{
-					info.push(
-						<p key={noRepeat++}>
-							<b style={{cursor:'pointer'}}>Not Favorited </b><br/>
-							<span style={{cursor:'pointer'}} 
-							onClick={() => {this.props.addFavourite(this.props.specificShow.id, 'Songs')}} 
-							className="bigFont fa fa-star"></span>
-						</p>
-					);
-				}
+    let noRepeat = 0;
+    const info = [];
+    let trackNum = 0;
+    const msToMinAndSec = (ms) => {
+      const minutes = Math.floor(ms / 60000);
+      const seconds = ((ms % 60000) / 1000).toFixed(0);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+    const aOrdenar = []
+    let ordenado = ''
 
-				break;
-			case 'Artists':
+    switch (whatToSearch) {
+      case 'Songs':
+        try {
+          if (specificShow.preview_url) {
+            info.push(
+              <div key={noRepeat++}>
+                <p>Preview:</p>
+                <audio type="audio/mpeg" controls src={specificShow.preview_url} />
+              </div>
+            )
+          } else {
+            info.push(
+              <p key={noRepeat++}>No preview available for this song</p>
+            )
+          }
+        } catch (e) { return false }
 
-				info.push(
-				<p key={noRepeat++}>
-					<b>Albums:</b> 
-				</p>
-				);
-				this.props.specificShow[1].items.forEach((each)=>{
-					info.push(
-						<p className="nomar" key={noRepeat++} onClick={ () => 
-								{
-								 this.props.getAlbum(each.id);
-								} 
-							}>
-							<a>
-								{ each.name }
-							</a>
-						</p>
-					);
-				});
+        info.push(
+          <div key={noRepeat++}>
+            <b>Album</b>
+            <div
+              role="button"
+              tabIndex="0"
+              className="nomar"
+              onClick={() => {
+                getAlbum(specificShow.album.id);
+              }}
+            >
+              { specificShow.album.name }
+            </div>
+            <br />
+            <b>Artist/s:</b>
+          </div>
+        );
+        specificShow.artists.forEach((each) => {
+          info.push(
+            <div
+              role="link"
+              tabIndex="0"
+              className="nomar"
+              key={noRepeat++}
+              onClick={() => {
+                getArtist(each.id);
+              }}
+            >
+              <div className="cursorPointer">
+                { each.name }
+              </div>
+            </div>
+          );
+        });
+        if (isFavourite) {
+          info.push(
+            <p key={noRepeat++}>
+              <b style={{ cursor: 'pointer' }}>Favorited </b>
+              <br />
+              <span
+                role="button"
+                tabIndex="0"
+                style={{ cursor: 'pointer' }}
+                onClick={() => { removeFavourite(specificShow.id, 'Songs') }}
+                className="bigFont fa fa-star checked"
+              />
+            </p>
+          );
+        } else {
+          info.push(
+            <p key={noRepeat++}>
+              <b style={{ cursor: 'pointer' }}>Not Favorited </b>
+              <br />
+              <span
+                role="button"
+                tabIndex="0"
+                style={{ cursor: 'pointer' }}
+                onClick={() => { addFavourite(specificShow.id, 'Songs') }}
+                className="bigFont fa fa-star"
+              />
+            </p>
+          );
+        }
 
-				break;
-			case 'Albums':
-				info.push(
-					<p key={noRepeat++}>
-						<b>Artist:</b>
-						<a onClick={ () => 
-							{
-							 this.props.getArtist(this.props.specificShow.artists[0].id);
-							} 
-						}>
-							{ this.props.specificShow.artists[0].name }
-						</a>
-						<br/>
-						<br/>
-						<b>Songs List: </b><a style={{fontSize:'12px'}} 
-						onClick={()=>{alert(ordenado)}}> (show ordered by duration)</a>
-					</p>
-				);
-				let trackNum = 0;
-				const msToMinAndSec = (ms) => {
-					let minutes = Math.floor(ms / 60000);
-					let seconds = ((ms % 60000) / 1000).toFixed(0);
-					return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-				}
-				let aOrdenar = [];
-				this.props.specificShow.tracks.items.forEach((each)=>{
-					trackNum++;
-					aOrdenar.push({numb:trackNum+') '+each.name+' - '+msToMinAndSec(each.duration_ms), duration:each.duration_ms});
-					info.push(
-						<p className="nomar" key={noRepeat++}  onClick={ () => 
-								{
-								 this.props.getSong(each.id);
-								} 
-							}>
-							{trackNum +') '}
-							<a>
-								{ each.name }
-							</a>
-							<span> - </span>
-							{msToMinAndSec(each.duration_ms)}
-						</p>
-					);
-				});
-				aOrdenar.sort((a,b)=>{
-					return a.duration-b.duration
-				});
-				let ordenado='';
-				aOrdenar.forEach((each)=>{ ordenado+=each.numb+'\n' })
-				try{
-					if(this.props.specificShow.release_date){
-						info.push(
-							<p key={noRepeat++}>
-								<b>Release Date : </b>
-								<span>{this.props.specificShow.release_date}</span>
-							</p>
-						);
-					}
-				}catch(e){};
-				try{
-					if(this.props.specificShow.label){
-						info.push(
-							<p key={noRepeat++}>
-								<b>Label : </b>
-								<span>{this.props.specificShow.label}</span>
-							</p>
-						);
-					}
-				}catch(e){};
+        break;
+      case 'Artists':
 
-				break;
-			default:
-				break;
-		}
-		return info;
-	}
+        info.push(
+          <p key={noRepeat++}>
+            <b>Albums:</b>
+          </p>
+        );
+        specificShow[1].items.forEach((each) => {
+          info.push(
+            <div
+              role="link"
+              tabIndex="0"
+              className="nomar"
+              key={noRepeat++}
+              onClick={() => {
+                getAlbum(each.id);
+              }}
+            >
+              <div className="cursorPointer">
+                { each.name }
+              </div>
+            </div>
+          );
+        });
 
-	render(){
+        break;
+      case 'Albums':
+        info.push(
+          <div key={noRepeat++}>
+            <b>Artist:</b>
+            <div
+              role="link"
+              tabIndex="0"
+              className="nomar"
+              onClick={() => {
+                getArtist(specificShow.artists[0].id);
+              }}
+            >
+              { specificShow.artists[0].name }
+            </div>
+            <br />
+            <b>Songs List: </b>
+            <div
+              role="button"
+              tabIndex="0"
+              className="nomar"
+              style={{ fontSize: '12px' }}
+              onClick={() => { alert(ordenado) }}
+            >
+              (show ordered by duration)
+            </div>
+          </div>
+        )
+        specificShow.tracks.items.forEach((each) => {
+          trackNum++;
+          aOrdenar.push({ numb: `${trackNum}) ${each.name} - ${msToMinAndSec(each.duration_ms)}`, duration: each.duration_ms });
+          info.push(
+            <div
+              role="link"
+              tabIndex="0"
+              className="nomar"
+              key={noRepeat++}
+              onClick={() => {
+                getSong(each.id);
+              }}
+            >
+              {`${trackNum}) ${each.name} - ${msToMinAndSec(each.duration_ms)}`}
+            </div>
+          );
+        });
+        aOrdenar.sort((a, b) => a.duration - b.duration);
+        aOrdenar.forEach((each) => { ordenado += `${each.numb}\n` })
+        try {
+          if (specificShow.release_date) {
+            info.push(
+              <p key={noRepeat++}>
+                <b>Release Date : </b>
+                <span>{specificShow.release_date}</span>
+              </p>
+            );
+          }
+        } catch (e) { return true }
+        try {
+          if (specificShow.label) {
+            info.push(
+              <p key={noRepeat++}>
+                <b>Label : </b>
+                <span>{specificShow.label}</span>
+              </p>
+            );
+          }
+        } catch (e) { return true }
 
-		// console.log(this.props.este.state.specificShow);
+        break;
+      default:
+        break;
+    }
+    return info;
+  }
 
- 		return(
+  render() {
+    const { whatToSearch, specificShow } = this.props
 
- 			<div>
- 				<p>{ this.props.whatToSearch.slice(0,-1) }</p>
- 				<h2>{ this.props.specificShow.name || this.props.specificShow[0].name }</h2>
- 				<img alt='Artwork' src={ this.drawImage() } style={{width:'35%'}} />
- 				<div>{ this.drawInfo() }</div>
- 				<hr style={{width:'45%'}}/>
- 			</div>
+    return (
 
-		)
-	}
+      <div>
+        <p>{ whatToSearch.slice(0, -1) }</p>
+        <h2>{ specificShow.name || specificShow[0].name }</h2>
+        <img alt="Artwork" src={this.drawImage()} style={{ width: '35%' }} />
+        <div>{ this.drawInfo() }</div>
+        <hr style={{ width: '45%' }} />
+      </div>
+
+    )
+  }
+}
+
+Specific.propTypes = {
+  addFavourite: PropTypes.any.isRequired,
+  getAlbum: PropTypes.any.isRequired,
+  getArtist: PropTypes.any.isRequired,
+  getSong: PropTypes.any.isRequired,
+  isFavourite: PropTypes.any.isRequired,
+  removeFavourite: PropTypes.any.isRequired,
+  specificShow: PropTypes.any.isRequired,
+  whatToSearch: PropTypes.any.isRequired
 }
 
 export default connect(mapStateToProps)(Specific);

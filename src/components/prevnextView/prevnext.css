@@ -1,0 +1,29 @@
+.theCont{
+  padding-bottom:10px;
+  padding-top:10px;
+  width:90%;
+  margin:auto;
+}
+.floatLeft{
+  position: relative;
+  top: -5px;
+  float: left;
+  margin-bottom: 5px;
+}
+.floatRight{
+  position: relative;
+  top: -5px;
+  float: right;
+  margin-bottom: 5px;
+}
+.bigger {
+  width: 100px;
+  height: 40px;
+  background-color: orange;
+  color: black;
+  transition: box-shadow .3s;
+  border-radius: 8px;
+}
+.bigger:hover {
+  box-shadow: 0 0 20px rgba(33,33,33,.5);
+}

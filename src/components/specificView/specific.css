@@ -1,0 +1,14 @@
+.nomar{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  transition: box-shadow .2s;
+}
+
+.nomar:hover{
+  box-shadow: 0 0 20px rgba(33,33,33,.5);
+  cursor: pointer
+}
+
+.cursorPointer {
+  cursor: pointer;
+}

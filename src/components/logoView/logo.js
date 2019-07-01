@@ -1,18 +1,28 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+import './logo.css'
 
-class Logo extends React.Component {
-	render(){
-		return (
-			<p className="valentify" 
-			onClick={()=>{ 
-				if (window.location.hash === "") this.props.handleClick();
-				else window.location.reload();
-			}}>
-				<img className="loguex" src={require('./logo.png')} alt="Spotify Logo"/>
-				<span className='textex'>Valentify</span>
-			</p>
-		);
-	}
+const Logo = ({ handleClick }) => (
+  <div
+    role="button"
+    tabIndex="0"
+    className="valentify"
+    onClick={() => {
+      if (window.location.hash === '') handleClick()
+      else window.location.reload();
+    }}
+  >
+    <img className="loguex" src={require('./logo.png')} alt="Spotify Logo" />
+    <span className="textex">Valentify</span>
+  </div>
+)
+
+Logo.defaultProps = {
+  handleClick: () => {}
 }
 
-export default Logo;
+Logo.propTypes = {
+  handleClick: PropTypes.func
+}
+
+export default Logo

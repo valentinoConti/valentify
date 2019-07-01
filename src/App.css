@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+body {
+  text-align: center;
+  min-width: 320px;
+}
+
+.checked{
+  color: orange;
+}
+
+.fondo {
+  width:100%;
+  padding-top:16px;
+  padding-bottom: 16px;
+  background-color: orange;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.bigFont {
+  font-size: 24px;
+}
+  
