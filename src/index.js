@@ -82,6 +82,7 @@ const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
+    {/* <BrowserRouter basename="/valentify/"> */}
     <BrowserRouter basename="/valentify/">
       <Switch>
         <Route exact path="/" component={Login} />

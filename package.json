@@ -5,7 +5,8 @@
   "description": "valentinoConti Globant Bootcamp Final Project",
   "scripts": {
     "start": "webpack-dev-server --devtool eval-source-map --history-api-fallback --hot",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "cypress": "npm run start & ./node_modules/.bin/cypress open"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^3.0.0",
+    "cypress": "^3.3.2",
+    "cypress-react-unit-test": "^2.4.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.2.0",
